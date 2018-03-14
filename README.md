@@ -58,3 +58,6 @@ jieba.useDict(dict)
 
 - [hermanschaaf/jieba-js](https://github.com/hermanschaaf/jieba-js)
 - [pulipulichen/jieba-js](https://github.com/pulipulichen/jieba-js)
+- [線上中文斷詞工具：Jieba-JS](http://blog.pulipuli.info/2017/03/jieba-js-online-chinese-analyzer-jieba.html)
+- [彙整中文與英文的詞性標註代號：結巴斷詞器與FastTag / Identify the Part of Speech in Chinese and English](http://blog.pulipuli.info/2017/11/fasttag-identify-part-of-speech-in.html)
+
