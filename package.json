@@ -1,0 +1,27 @@
+{
+  "name": "jieba-js",
+  "version": "1.0.0",
+  "description": "jieba-js chinese word segmentation for node in pure javascript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hermanschaaf/jieba-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hermanschaaf/jieba-js/issues"
+  },
+  "homepage": "https://github.com/hermanschaaf/jieba-js#readme",
+  "dependencies": {
+    "core-decorators": "^0.20.0",
+    "crlf-normalize": "^1.0.1",
+    "readline-stream": "^1.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^9.4.7"
+  }
+}
