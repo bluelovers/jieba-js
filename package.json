@@ -18,8 +18,7 @@
   "homepage": "https://github.com/hermanschaaf/jieba-js#readme",
   "dependencies": {
     "core-decorators": "^0.20.0",
-    "crlf-normalize": "^1.0.1",
-    "readline-stream": "^1.0.2"
+    "crlf-normalize": "^1.0.1"
   },
   "devDependencies": {
     "@types/node": "^9.4.7"

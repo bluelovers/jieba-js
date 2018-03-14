@@ -2,12 +2,14 @@
  * Created by user on 2018/3/14/014.
  */
 
-import { loadStream, load as loadDict, loadSync as loadDictSync } from './loader/jieba';
+import { loadStream, load as loadDict, loadSync as loadDictSync, IDict } from './loader/jieba';
 import buildFromDict, { IFreq, ITrie } from './trie/index';
 import { max_of_array, min_of_array } from './util';
 import crlf, { LF, lineSplit } from 'crlf-normalize';
 import { autobind } from 'core-decorators';
 import * as path from 'path';
+
+const DEFAULT_DICT_PATH = path.join(__dirname, '../dict');
 
 @autobind
 export class Jieba
@@ -28,18 +30,28 @@ export class Jieba
 		dict_file: string[],
 	};
 
-	dictionary: [string, number, string][] = [];
+	dictionary: IDict = [];
 
 	constructor(options = {})
 	{
 		this.options = options;
 		//this._setup();
 
-		this.useDict(path.join(__dirname, '../dict/dict.txt.big'));
+		this.useDict(path.join(DEFAULT_DICT_PATH, 'dict.txt.big'));
 	}
 
-	useDict(dict)
+	static get DEFAULT_DICT_PATH()
 	{
+		return DEFAULT_DICT_PATH;
+	}
+
+	useDict(dict: string): this
+	useDict(dict: IDict): this
+	useDict(dict: (dict: IDict, jieba: Jieba) => IDict | string | null | void): this
+	useDict(dict): this
+	{
+		const self = this;
+
 		if (typeof dict == 'string')
 		{
 			this._cache_.dict_file.push(dict);
@@ -49,6 +61,25 @@ export class Jieba
 			this.dictionary = this.dictionary
 				.concat(dict)
 			;
+		}
+		else if (typeof dict == 'function')
+		{
+			let ret = dict.call(this, this.dictionary, this);
+
+			if (ret instanceof Promise)
+			{
+				ret.then(function (ret)
+				{
+					if (ret)
+					{
+						self.useDict(ret);
+					}
+				})
+			}
+			else if (ret)
+			{
+				self.useDict(ret);
+			}
 		}
 		else
 		{
@@ -307,6 +338,9 @@ export class Jieba
 			for (let xi in DAG[idx])
 			{
 				let x = DAG[idx][xi];
+
+				//console.log(x, sentence.substring(idx, x + 1));
+
 				let f = ((sentence.substring(idx, x + 1) in this._cache_.FREQ)
 					? this._cache_.FREQ[sentence.substring(idx, x + 1)]
 					: this._cache_.min_freq);

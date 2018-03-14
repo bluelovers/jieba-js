@@ -40,6 +40,20 @@ cut('我的中文東西。 2222222222').then(function (ret)
 });
 ```
 
+### Dict
+
+> this method only work before first time call `jieba.cut` or `jieba.init`
+
+```ts
+jieba.useDict('path of dict file')
+
+let dict = [
+    ['xxx', 0, 'x'],
+];
+
+jieba.useDict(dict)
+```
+
 ## link
 
 - [hermanschaaf/jieba-js](https://github.com/hermanschaaf/jieba-js)
