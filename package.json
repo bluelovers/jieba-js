@@ -1,21 +1,44 @@
 {
   "name": "jieba-js",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "jieba-js chinese word segmentation for node in pure javascript.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "keywords": [
+    "analyzer",
+    "chinese",
+    "chinese segmentation",
+    "dict",
+    "javascript",
+    "jieba",
+    "optimizer",
+    "pure",
+    "pure javascript",
+    "segment",
+    "segmentation",
+    "split",
+    "tokenizer",
+    "trie",
+    "word",
+    "中文",
+    "中文分词",
+    "分词"
+  ],
+  "homepage": "https://github.com/bluelovers/jieba-js#readme",
+  "bugs": {
+    "url": "https://github.com/bluelovers/jieba-js/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hermanschaaf/jieba-js.git"
+    "url": "git+https://github.com/bluelovers/jieba-js.git"
   },
-  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/hermanschaaf/jieba-js/issues"
+  "author": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
   },
-  "homepage": "https://github.com/hermanschaaf/jieba-js#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "core-decorators": "^0.20.0",
     "crlf-normalize": "^1.0.1"
